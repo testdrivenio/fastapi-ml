@@ -2,7 +2,7 @@
 
 ## Want to learn how to build this?
 
-Check out the [post](https://testdriven.io/blog/fastapi-ml).
+Check out the [post](https://testdriven.io/blog/fastapi-machine-learning).
 
 ## Want to use this project?
 
