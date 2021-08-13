@@ -17,7 +17,7 @@ Check out the [post](https://testdriven.io/blog/fastapi-machine-learning).
 1. Spin up the container:
 
     ```sh
-    $ docker run --name fastapi-ml -e PORT=8008 -p 8008:8008 -d registry.heroku.com/tranquil-cliffs-74287/web:latest
+    $ docker run --name fastapi-ml -e PORT=8008 -p 8008:8008 -d fastapi-prophet:latest
     ```
 
 1. Train the model:
