@@ -43,8 +43,8 @@ def predict(ticker="MSFT", days=7):
 
     forecast = model.predict(df)
 
-    model.plot(forecast).savefig(f"{ticker}_plot.png")
-    model.plot_components(forecast).savefig(f"{ticker}_plot_components.png")
+    # model.plot(forecast).savefig(f"{ticker}_plot.png")
+    # model.plot_components(forecast).savefig(f"{ticker}_plot_components.png")
 
     return forecast.tail(days).to_dict("records")
 

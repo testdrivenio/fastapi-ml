@@ -6,7 +6,40 @@ Check out the [post](https://testdriven.io/blog/fastapi-machine-learning).
 
 ## Want to use this project?
 
-1. Fork/Clone
+### With Docker
+
+1. Build and tag the Docker image:
+
+    ```sh
+    $ docker build -t fastapi-prophet .
+    ```
+
+1. Spin up the container:
+
+    ```sh
+    $ docker run --name fastapi-ml -e PORT=8008 -p 8008:8008 -d registry.heroku.com/tranquil-cliffs-74287/web:latest
+    ```
+
+1. Train the model:
+
+    ```sh
+    $ docker exec -it fastapi-ml python
+
+    >>> from model import train, predict, convert
+    >>> train()
+    ```
+
+1. Test:
+
+    ```sh
+    $ curl \
+      --header "Content-Type: application/json" \
+      --request POST \
+      --data '{"ticker":"MSFT"}' \
+      http://localhost:8008/predict
+    ```
+
+### Without Docker
 
 1. Create and activate a virtual environment:
 
