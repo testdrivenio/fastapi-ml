@@ -1,16 +1,15 @@
 # pystan must be installed before prophet
 # you may need to pip install it on it's own
 # before installing the remaining requirements
-# pip install pystan==2.19.1.1
+# pip install pystan==3.7.0
 
-pystan==2.19.1.1
+pystan==3.7.0
 
-fastapi==0.68.0
-gunicorn==20.1.0
-uvicorn==0.14.0
+fastapi==0.95.2
+uvicorn==0.22.0
 
-fbprophet==0.7.1
-joblib==1.0.1
-pandas==1.3.1
-plotly==5.1.0
-yfinance==0.1.63
+prophet==1.1.3
+joblib==1.2.0
+pandas==2.0.1
+plotly==5.14.1
+yfinance==0.2.18

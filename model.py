@@ -4,7 +4,7 @@ from pathlib import Path
 import joblib
 import pandas as pd
 import yfinance as yf
-from fbprophet import Prophet
+from prophet import Prophet
 
 BASE_DIR = Path(__file__).resolve(strict=True).parent
 TODAY = datetime.date.today()
