@@ -1,31 +1,24 @@
-# Use an official lightweight Python base image
-FROM python:3.11-slim-buster
+FROM python:3.11
 
-# Set the working directory to /app
 WORKDIR /app
 
-# Copy the current directory contents into the container at /app
-COPY . /app
+RUN apt-get -y update  && apt-get install -y \
+  python3-dev \
+  apt-utils \
+  python-dev \
+  build-essential \
+&& rm -rf /var/lib/apt/lists/*
 
-# Install required system packages
-RUN apt-get update && apt-get install -y --no-install-recommends \
-    build-essential \
-    python3-dev \
-    && rm -rf /var/lib/apt/lists/*
-
-# Install required Python packages
 RUN pip install --upgrade setuptools
 RUN pip install \
-    cython==0.29.34 \
+    cython==0.29.35 \
     numpy==1.24.3 \
     pandas==2.0.1 \
     pystan==3.7.0
 
-# Install any needed packages specified in requirements.txt
-RUN pip install --no-cache-dir -r requirements.txt
+COPY requirements.txt .
+RUN pip install -r requirements.txt
 
-# Remove unnecessary files (like .pyc files)
-RUN find /app -name '*.pyc' -delete
+COPY . .
 
-# Run the application
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "80"]
+CMD gunicorn -w 3 -k uvicorn.workers.UvicornWorker main:app --bind 0.0.0.0:$PORT
