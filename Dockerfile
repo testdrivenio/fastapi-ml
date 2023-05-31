@@ -1,4 +1,4 @@
-FROM python:3.8
+FROM python:3.11
 
 WORKDIR /app
 
@@ -11,10 +11,10 @@ RUN apt-get -y update  && apt-get install -y \
 
 RUN pip install --upgrade setuptools
 RUN pip install \
-    cython==0.29.24 \
-    numpy==1.21.1 \
-    pandas==1.3.1 \
-    pystan==2.19.1.1
+    cython==0.29.35 \
+    numpy==1.24.3 \
+    pandas==2.0.1 \
+    pystan==3.7.0
 
 COPY requirements.txt .
 RUN pip install -r requirements.txt
